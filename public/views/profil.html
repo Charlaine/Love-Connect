@@ -1,0 +1,16 @@
+<button class="recherche"> <a href="#/recherche">Retour à la recherche </a></button>
+<center>
+	<a href="#/" class="logo"><img src="../logo1.png" alt=""></a>
+	<h2 class="titre" id="logo" style="font-weight: bold;">Love & Connect</h2>
+</center>
+<div class="block">
+	<div ng-repeat="t in todos | filter:sexe1" class="inline">
+		<div class="personnes">
+			<center>
+				<img data-ng-src="{{t.image}}" />
+				<p> <a ng-click="pageProfil(t._id)" href=""> {{t.pseudo}}</a></p>
+				<p>{{t.ville}}</p>
+			</center>
+		</div>
+	</div>
+</div>

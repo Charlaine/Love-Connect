@@ -1,0 +1,804 @@
+<center>
+	<a href="#/" class="logo"><img src="../logo1.png" alt=""></a>
+	<h2 class="titre" id="logo" style="font-weight: bold;">Love & Connect</h2>
+</center>
+<h1 class="titre">Etape {{op1}}</h1>
+<br>
+<div ng-show="op1==1" class="block">
+	<form class="form-horizontal" name="form1">
+
+		<!-- Form Name -->
+		<legend>Inscription</legend>
+
+		<!-- Select Basic -->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="selectbasic">Vous êtes ?</label>
+			<div class="col-md-4" ng-init="sexes=['Homme','Femme']" class="form-control">
+				<select name="sexe" class="form-control" ng-model='sexe' ng-options="sexes.indexOf(v) as v for v in sexes" class="form-control">
+					<option value="">Vous êtes ??</option>
+				</select>
+			</div>
+		</div>
+
+		<!-- Text input-->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="maison">Vous habitez ?</label>
+			<div class="col-md-4">
+				<input name="maison" id="inputLieu" ng-autocomplete='' required ng-pattern="/^[a-z ,]+$/i" ng-model="ville" placeholder="Ville111" class="form-control input-md" type="text" options="{ types: '(cities)'}">
+
+			</div>
+		</div>
+
+
+		<!-- Text input-->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="date">Date de naissance</label>
+			<div class="col-md-4">
+				<input id="date" name="date" ng-model="date" placeholder="jj/mm/aaaa" class="form-control input-md" required="" type="date" >
+
+			</div>
+		</div>
+
+		<!-- Button -->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="continuer"></label>
+			<div class="col-md-4">
+				<button id="continuer" name="continuer" ng-disabled="form1.$invalid" class="btn btn-success" ng-click="page()">Continuer >></button>
+			</div>
+		</div>
+	</form>
+</div>
+<div ng-show="op1==2" class="block">
+	<form class="form-horizontal" name="form2">
+
+		<!-- Form Name -->
+		<legend>Inscription</legend>
+
+		<!-- Text input-->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="textinput">Votre pseudo</label>
+			<div class="col-md-4">
+				<input id="textinput" name="textinput" required ng-pattern="/^([a-zA-Z0-9-_]{2,36})/" ng-model='pseudo' placeholder="ex: votre pseudo" class="form-control input-md" required="" type="text">
+
+			</div>
+		</div>
+
+		<!-- Text input-->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="email">Votre email</label>
+			<div class="col-md-4">
+				<input id="email" name="email" ng-model="email" placeholder="ex: L&amp;C@justintime.fr" class="form-control input-md" required ng-pattern="EMAIL_REGEXP" type="text">
+
+			</div>
+		</div>
+
+		<!-- Password input-->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="mdp">Votre mot de passe</label>
+			<div class="col-md-4">
+				<input id="mdp" name="mdp" required ng-pattern="/^([a-zA-Z0-9-_]{2,36})/" ng-model="mdp" placeholder="8 caractères minimum" class="form-control input-md" required="" type="password">
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="mdp">Confirmation mot de passe</label>
+			<div class="col-md-4">
+				<input id="mdp" name="mdp" required ng-pattern="/^([a-zA-Z0-9-_]{2,36})/" ng-model="rmdp" placeholder="8 caractères minimum" class="form-control input-md" required="" type="password"> <span ng-show="rmdp != mdp">Mots de passe non identiques !</span>
+			</div>
+		</div>
+
+		<!-- Button -->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="continuer"></label>
+			<div class="col-md-4">
+				<a class="btn btn-warning" ng-click="precedent()">
+					<< Précédent</a>
+						<button id="continuer" ng-click="page()" name="continuer" ng-disabled="form2.$invalid" class="btn btn-success">Continuer >></button>
+			</div>
+		</div>
+	</form>
+
+</div>
+
+<div ng-show="op1==3" class="block">
+	<form class="form-horizontal">
+
+		<!-- Form Name -->
+		<legend>Inscription</legend>
+
+		<!-- Multiple Radios -->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="statut">Vous êtes ...</label>
+			<div class="col-md-4">
+				<div class="radio">
+					<label for="statut-0">
+						<input type="radio" ng-model="statut" name="statut" id="statut-0" value="Célibataire" checked="checked"> Célibataire
+					</label>
+				</div>
+				<div class="radio">
+					<label for="statut-1">
+						<input type="radio" ng-model="statut" name="statut" id="statut-1" value="Marié(e)"> Marié(e)
+					</label>
+				</div>
+				<div class="radio">
+					<label for="statut-2">
+						<input type="radio" ng-model="statut" name="statut" id="statut-2" value="Séparé(e)"> Séparé(e)
+					</label>
+				</div>
+				<div class="radio">
+					<label for="statut-3">
+						<input type="radio" ng-model="statut" name="statut" id="statut-3" value="Divorcé(e)"> Divorcé(e)
+					</label>
+				</div>
+				<div class="radio">
+					<label for="statut-4">
+						<input type="radio" ng-model="statut" name="statut" id="statut-4" value="Veuf / Veuve"> Veuf / Veuve
+					</label>
+				</div>
+			</div>
+		</div>
+
+		<!-- Multiple Radios -->
+
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="attentes">Et vous cherchez ...</label>
+			<div class="col-md-4">
+				<div class="radio">
+					<label for="attentes-0">
+						<input type="radio" ng-model="attentes" name="attentes" id="attentes-0" value="L'âme soeur" checked="checked"> L'âme soeur
+					</label>
+				</div>
+				<div class="radio">
+					<label for="attentes-1">
+						<input type="radio" ng-model="attentes" name="attentes" id="attentes-1" value="Une histoire sans prise de tête"> Une histoire sans prise de tête
+					</label>
+				</div>
+				<div class="radio">
+					<label for="attentes-2">
+						<input type="radio" ng-model="attentes" name="attentes" id="attentes-2" value="De nouveaux amis"> De nouveaux amis
+					</label>
+				</div>
+			</div>
+		</div>
+		<!-- Button -->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="continuer"></label>
+			<div class="col-md-4">
+				<a class="btn btn-warning" ng-click="precedent()">
+					<< Précédent</a>
+						<button id="continuer" ng-click="page()" name="continuer" class="btn btn-success">Continuer >></button>
+			</div>
+		</div>
+	</form>
+</div>
+
+<div ng-show="op1==4" class="block">
+	<form class="form-horizontal">
+
+		<!-- Form Name -->
+		<legend>Inscription</legend>
+
+		<!-- Multiple Radios (inline) -->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="enfants">Avez-vous des enfants ?</label>
+			<div class="col-md-4">
+				<label class="radio-inline" for="enfants-0">
+					<input type="radio" name="enfants" ng-model="avez" id="enfants-0" value="Oui" checked="checked"> Oui
+				</label>
+				<label class="radio-inline" for="enfants-1">
+					<input type="radio" name="enfants" ng-model="avez" id="enfants-1" value="Non"> Non
+				</label>
+			</div>
+		</div>
+
+		<!-- Multiple Radios -->
+
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="enfants">Et sinon, vous en voulez ??</label>
+			<div class="col-md-4">
+				<div class="radio">
+					<label for="enfants1-0">
+						<input type="radio" name="enfants1" ng-model="enfants" id="enfants1-0" value="Oui, j'en veux !" checked="checked"> Oui, j'en veux !
+					</label>
+				</div>
+				<div class="radio">
+					<label for="enfants1-1">
+						<input type="radio" name="enfants1" ng-model="enfants" id="enfants1-1" value="Pourquoi pas ??"> Pourquoi pas ??
+					</label>
+				</div>
+				<div class="radio">
+					<label for="enfants1-2">
+						<input type="radio" name="enfants1" ng-model="enfants" id="enfants1-2" value="Non je n'en veux pas !"> Non je n'en veux pas !
+					</label>
+				</div>
+			</div>
+		</div>
+		<!-- Button -->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="continuer"></label>
+			<div class="col-md-4">
+				<a class="btn btn-warning" ng-click="precedent()">
+					<< Précédent</a>
+						<button id="continuer" ng-click="page()" name="continuer" class="btn btn-success">Continuer >></button>
+			</div>
+		</div>
+	</form>
+</div>
+
+<div ng-show="op1==5" class="block">
+	<form class="form-horizontal">
+
+
+		<!-- Form Name -->
+		<legend>Inscription</legend>
+
+		<!-- Text input-->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="Votre taille">Votre taille</label>
+			<div class="col-md-4">
+				<input id="Votre taille" name="Votre taille" ng-model="taille" type="text" placeholder="ex: 175cms" class="form-control input-md" required="">
+
+			</div>
+		</div>
+
+		<!-- Multiple Radios -->
+
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="silhouette">Votre silhouette est plutôt ...</label>
+			<div class="col-md-4">
+				<div class="radio">
+					<label for="silhouette-0">
+						<input type="radio" name="silhouette" ng-model="silhouette" id="silhouette-0" value="Normale" checked="checked"> Normale
+					</label>
+				</div>
+				<div class="radio">
+					<label for="silhouette-1">
+						<input type="radio" name="silhouette" ng-model="silhouette" id="silhouette-1" value="Sportive"> Sportive
+					</label>
+				</div>
+				<div class="radio">
+					<label for="silhouette-2">
+						<input type="radio" name="silhouette" ng-model="silhouette" id="silhouette-2" value="Mince"> Mince
+					</label>
+				</div>
+				<div class="radio">
+					<label for="silhouette-3">
+						<input type="radio" name="silhouette" ng-model="silhouette" id="silhouette-3" value="Quelques kilos en trop"> Quelques kilos en trop
+					</label>
+				</div>
+			</div>
+		</div>
+
+		<!-- Multiple Radios -->
+
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="cheveux">Vous avez les cheveux ...</label>
+			<div class="col-md-4">
+				<div class="radio">
+					<label for="cheveux-0">
+						<input type="radio" name="cheveux" ng-model="cheveux" id="cheveux-0" value="Longs" checked="checked"> Longs
+					</label>
+				</div>
+				<div class="radio">
+					<label for="cheveux-1">
+						<input type="radio" name="cheveux" ng-model="cheveux" id="cheveux-1" value="Mi-longs"> Mi-longs
+					</label>
+				</div>
+				<div class="radio">
+					<label for="cheveux-2">
+						<input type="radio" name="cheveux" ng-model="cheveux" id="cheveux-2" value="Courts"> Courts
+					</label>
+				</div>
+				<div class="radio">
+					<label for="cheveux-3">
+						<input type="radio" name="cheveux" ng-model="cheveux" id="cheveux-3" value="Rasés"> Rasés
+					</label>
+				</div>
+				<div class="radio">
+					<label for="cheveux-4">
+						<input type="radio" name="cheveux" ng-model="cheveux" id="cheveux-4" value="Chauve"> Chauve
+					</label>
+				</div>
+			</div>
+		</div>
+
+		<!-- Multiple Radios -->
+
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="cheveux">Et leur couleur ??</label>
+			<div class="col-md-4">
+				<div class="radio">
+					<label for="cheveux1-0">
+						<input type="radio" name="cheveux1" ng-model="couleurchvx" id="cheveux1-0" value="Noirs" checked="checked"> Noirs
+					</label>
+				</div>
+				<div class="radio">
+					<label for="cheveux1-1">
+						<input type="radio" name="cheveux1" ng-model="couleurchvx" id="cheveux1-1" value="Bruns"> Bruns
+					</label>
+				</div>
+				<div class="radio">
+					<label for="cheveux1-2">
+						<input type="radio" name="cheveux1" ng-model="couleurchvx" id="cheveux1-2" value="Châtains"> Châtains
+					</label>
+				</div>
+				<div class="radio">
+					<label for="cheveux1-3">
+						<input type="radio" name="cheveux1" ng-model="couleurchvx" id="cheveux1-3" value="Blonds"> Blonds
+					</label>
+				</div>
+				<div class="radio">
+					<label for="cheveux1-4">
+						<input type="radio" name="cheveux1" ng-model="couleurchvx" id="cheveux1-4" value="Roux"> Roux
+					</label>
+				</div>
+				<div class="radio">
+					<label for="cheveux1-5">
+						<input type="radio" name="cheveux1" ng-model="couleurchvx" id="cheveux1-5" value="Poivre et sel"> Poivre et sel
+					</label>
+				</div>
+				<div class="radio">
+					<label for="cheveux1-6">
+						<input type="radio" name="cheveux1" ng-model="couleurchvx" id="cheveux1-6" value="Blancs"> Blancs
+					</label>
+				</div>
+				<div class="radio" ng-repeat="element in cheveux_couleurs">
+					<label for="cheveux1-7">
+						<input type="radio" name="cheveux1" ng-model="couleurchvx" id="cheveux1-7" value="Autres">
+					</label>
+				</div>
+			</div>
+		</div>
+		<!-- Button -->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="continuer"></label>
+			<div class="col-md-4">
+				<a class="btn btn-warning" ng-click="precedent()">
+					<< Précédent</a>
+						<button id="continuer" ng-click="page()" name="continuer" class="btn btn-success">Continuer >></button>
+			</div>
+		</div>
+	</form>
+</div>
+
+<div ng-show="op1 == 6" class="block">
+
+	<form class="form-horizontal">
+		<!-- Form Name -->
+		<legend>Vos qualités</legend>
+
+		<!-- Multiple Checkboxes -->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="Qualités">Pourquoi êtes-vous si surprenant(e) ?</label>
+			<div class="col-md-4">
+				<div class="checkbox">
+					<label for="Qualités-0">
+						<input type="checkbox" name="Qualités" id="Qualités-0" ng-model="qualite01" ng-true-value="'J\'ai de magnifiques pieds grecs'" ng-false-value="''"> J'ai de magnifiques pieds grecs
+					</label>
+				</div>
+				<div class="checkbox">
+					<label for="Qualités-1">
+						<input type="checkbox" name="Qualités" id="Qualités-1" ng-model="qualite02" ng-true-value="'Je suis l\'expert de la danse des oreilles'" ng-false-value="''"> Je suis l'expert de la danse des oreilles
+					</label>
+				</div>
+				<div class="checkbox">
+					<label for="Qualités-2">
+						<input type="checkbox" name="Qualités" id="Qualités-2" ng-model="qualite03" ng-true-value="'Je chante toujours à tue-tête sous la douche'" ng-false-value="''"> Je chante toujours à tue-tête sous la douche
+					</label>
+				</div>
+				<div class="checkbox">
+					<label for="Qualités-3">
+						<input type="checkbox" name="Qualités" id="Qualités-3" ng-model="qualite04" ng-true-value="'Je danse toujours même quand personne ne danse'"> Je danse toujours même quand personne ne danse
+					</label>
+				</div>
+				<div class="checkbox">
+					<label for="Qualités-4">
+						<input type="checkbox" name="Qualités" id="Qualités-4" ng-model="qualite05" ng-true-value="'J\'aime le chocolat Milka'"> J'aime le chocolat Milka
+					</label>
+				</div>
+			</div>
+		</div>
+		<!-- Button (Double) -->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="continuer"></label>
+			<div class="col-md-4">
+				<a class="btn btn-warning" ng-click="precedent()">
+					<< Précédent</a>
+						<button id="continuer" ng-click="page()" name="continuer" class="btn btn-success">Continuer >></button>
+			</div>
+		</div>
+	</form>
+</div>
+
+<div ng-show="op1 == 7" class="block">
+
+	<form class="form-horizontal">
+
+		<!-- Form Name -->
+		<legend>Vos petites manies</legend>
+
+		<!-- Multiple Checkboxes -->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="Vos petites manies">Quelles imperfections vont le (la) rendre accro ?</label>
+			<div class="col-md-4">
+				<div class="checkbox">
+					<label for="Vos petites manies-0">
+						<input type="checkbox" name="Vos petites manies" id="Vos petites manies-0" ng-model="manie01" ng-true-value="'Je suis toujours en retard'" ng-false-value="''"> Je suis toujours en retard
+					</label>
+				</div>
+				<div class="checkbox">
+					<label for="Vos petites manies-1">
+						<input type="checkbox" name="Vos petites manies" id="Vos petites manies-1" ng-model="manie02" ng-true-value="'Je suis maladroit(e)'" ng-false-value="''"> Je suis maladroit(e)
+					</label>
+				</div>
+				<div class="checkbox">
+					<label for="Vos petites manies-2">
+						<input type="checkbox" name="Vos petites manies" id="Vos petites manies-2" ng-model="manie03" ng-true-value="'Je suis une vraie tête brulée'" ng-false-value="''"> Je suis une vraie tête brulée
+					</label>
+				</div>
+				<div class="checkbox">
+					<label for="Vos petites manies-3">
+						<input type="checkbox" name="Vos petites manies" id="Vos petites manies-3" ng-model="manie04" ng-true-value="'Je suis toujours dans la lune'" ng-false-value="''"> Je suis toujours dans la lune
+					</label>
+				</div>
+				<div class="checkbox">
+					<label for="Vos petites manies-4">
+						<input type="checkbox" name="Vos petites manies" id="Vos petites manies-4" ng-model="manie05" ng-true-value="'Je suis sensible'" ng-false-value="''"> Je suis sensible
+					</label>
+				</div>
+				<div class="checkbox">
+					<label for="Vos petites manies-5">
+						<input type="checkbox" name="Vos petites manies" id="Vos petites manies-5" ng-model="manie06" ng-true-value="'Je rigole toujours à mes propres blagues'" ng-false-value="''"> Je rigole toujours à mes propres blagues
+					</label>
+				</div>
+			</div>
+		</div>
+		<!-- Button (Double) -->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="continuer"></label>
+			<div class="col-md-4">
+				<a class="btn btn-warning" ng-click="precedent()">
+					<< Précédent</a>
+						<button id="continuer" ng-click="page()" name="continuer" class="btn btn-success">Continuer >></button>
+			</div>
+		</div>
+	</form>
+</div>
+
+<div ng-show="op1 == 8" class="block">
+	<form class="form-horizontal">
+
+		<!-- Form Name -->
+		<legend>Vos centres d'interêts</legend>
+
+		<!-- Multiple Checkboxes -->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="interets">Quels sports aimeriez-vous pratiquer avec cette fameuse rencontre ?</label>
+			<div class="col-md-4">
+				<div class="checkbox">
+					<label for="interets-0">
+						<input type="checkbox" name="interets" id="interets-0" ng-model="interets01" ng-true-value="'Tennis'" ng-false-value="''"> Tennis
+					</label>
+				</div>
+				<div class="checkbox">
+					<label for="interets-1">
+						<input type="checkbox" name="interets" id="interets-1" ng-model="interets02" ng-true-value="'Football'" ng-false-value="''"> Football
+					</label>
+				</div>
+				<div class="checkbox">
+					<label for="interets-2">
+						<input type="checkbox" name="interets" id="interets-2" ng-model="interets03" ng-true-value="'Boxe'" ng-false-value="''"> Boxe
+					</label>
+				</div>
+				<div class="checkbox">
+					<label for="interets-3">
+						<input type="checkbox" name="interets" id="interets-3" ng-model="interets04" ng-true-value="'Basket'" ng-false-value="''"> Basket
+					</label>
+				</div>
+				<div class="checkbox">
+					<label for="interets-4">
+						<input type="checkbox" name="interets" id="interets-4" ng-model="interets05" ng-true-value="'Course à pied'" ng-false-value="''"> Course à pied
+					</label>
+				</div>
+				<div class="checkbox">
+					<label for="interets-5">
+						<input type="checkbox" name="interets" id="interets-5" ng-model="interets06" ng-true-value="'Tous les sports !'"> Tous les sports !
+					</label>
+				</div>
+			</div>
+		</div>
+		<!-- Button (Double) -->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="continuer"></label>
+			<div class="col-md-4">
+				<a class="btn btn-warning" ng-click="precedent()">
+					<< Précédent</a>
+						<button id="continuer" ng-click="page()" name="continuer" class="btn btn-success">Continuer >></button>
+			</div>
+		</div>
+	</form>
+</div>
+
+<div ng-show="op1 == 9" class="block">
+	<form class="form-horizontal">
+
+		<!-- Form Name -->
+		<legend>Vos centres d'interêts</legend>
+
+		<!-- Multiple Checkboxes -->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="musique">Quelles musiques vous font vibrer ?</label>
+			<div class="col-md-4">
+				<div class="checkbox">
+					<label for="musique-0">
+						<input type="checkbox" name="musique" id="musique-0" ng-model="musique01" ng-true-value="'RnB'" ng-false-value="''"> RnB
+					</label>
+				</div>
+				<div class="checkbox">
+					<label for="musique-1">
+						<input type="checkbox" name="musique" id="musique-1" ng-model="musique02" ng-true-value="'Soul'" ng-false-value="''"> Soul
+					</label>
+				</div>
+				<div class="checkbox">
+					<label for="musique-2">
+						<input type="checkbox" name="musique" id="musique-2" ng-model="musique03" ng-true-value="'Reggaeton'" ng-false-value="''"> Reggaeton
+					</label>
+				</div>
+				<div class="checkbox">
+					<label for="musique-3">
+						<input type="checkbox" name="musique" id="musique-3" ng-model="musique04" ng-true-value="'DanceHall'" ng-false-value="''"> DanceHall
+					</label>
+				</div>
+				<div class="checkbox">
+					<label for="musique-4">
+						<input type="checkbox" name="musique" id="musique-4" ng-model="musique05" ng-true-value="'Rap'" ng-false-value="''"> Rap
+					</label>
+				</div>
+				<div class="checkbox">
+					<label for="musique-5">
+						<input type="checkbox" name="musique" id="musique-5" ng-model="musique06" ng-true-value="'Jazz'" ng-false-value="''"> Jazz
+					</label>
+				</div>
+				<div class="checkbox">
+					<label for="musique-6">
+						<input type="checkbox" name="musique" id="musique-6" ng-model="musique07" ng-true-value="'Rock'" ng-false-value="''"> Rock
+					</label>
+				</div>
+				<div class="checkbox">
+					<label for="musique-7">
+						<input type="checkbox" name="musique" id="musique-7" ng-model="musique08" ng-true-value="'Blues'" ng-false-value="''"> Blues
+					</label>
+				</div>
+				<div class="checkbox">
+					<label for="musique-8">
+						<input type="checkbox" name="musique" id="musique-8" ng-model="musique09" ng-true-value="'Métal'" ng-false-value="''"> Métal
+					</label>
+				</div>
+				<div class="checkbox">
+					<label for="musique-9">
+						<input type="checkbox" name="musique" id="musique-9" ng-model="musique010" ng-true-value="'Variété Française'" ng-false-value="''"> Variété Française
+					</label>
+				</div>
+				<div class="checkbox">
+					<label for="musique-10">
+						<input type="checkbox" name="musique" id="musique-10" ng-model="musique011" ng-true-value="'La musique me fait vibrer!'" ng-false-value="''"> La musique me fait vibrer!
+					</label>
+				</div>
+			</div>
+		</div>
+		<!-- Button (Double) -->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="continuer"></label>
+			<div class="col-md-4">
+				<a class="btn btn-warning" ng-click="precedent()">
+					<< Précédent</a>
+						<button id="continuer" ng-click="page()" name="continuer" class="btn btn-success">Continuer >></button>
+			</div>
+		</div>
+	</form>
+</div>
+
+<div ng-show="op1 == 10" class="block">
+	<form class="form-horizontal">
+
+		<!-- Form Name -->
+		<legend>Vos centres d'interêts</legend>
+
+		<!-- Multiple Checkboxes -->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="film">Devant quel genre de film aimez-vous dévorer vos PopCorn ?</label>
+			<div class="col-md-4">
+				<div class="checkbox">
+					<label for="film-0">
+						<input type="checkbox" name="film" id="film-0" ng-model="film01" ng-true-value="'Comédies'" ng-false-value="''"> Comédies
+					</label>
+				</div>
+				<div class="checkbox">
+					<label for="film-1">
+						<input type="checkbox" name="film" id="film-1" ng-model="film02" ng-true-value="'Aventures'" ng-false-value="''"> Aventures
+					</label>
+				</div>
+				<div class="checkbox">
+					<label for="film-2">
+						<input type="checkbox" name="film" id="film-2" ng-model="film03" ng-true-value="'Documentaires'" ng-false-value="''"> Documentaires
+					</label>
+				</div>
+				<div class="checkbox">
+					<label for="film-3">
+						<input type="checkbox" name="film" id="film-3" ng-model="film04" ng-true-value="'Science-Fiction'" ng-false-value="''"> Science-Fiction
+					</label>
+				</div>
+				<div class="checkbox">
+					<label for="film-4">
+						<input type="checkbox" name="film" id="film-4" ng-model="film05" ng-true-value="'Thriller'" ng-false-value="''"> Thriller
+					</label>
+				</div>
+				<div class="checkbox">
+					<label for="film-5">
+						<input type="checkbox" name="film" id="film-5" ng-model="film06" ng-true-value="'Policier'" ng-false-value="''"> Policier
+					</label>
+				</div>
+				<div class="checkbox">
+					<label for="film-6">
+						<input type="checkbox" name="film" id="film-6" ng-model="film07" ng-true-value="'Fantastiques'" ng-false-value="''"> Fantastiques
+					</label>
+				</div>
+				<div class="checkbox">
+					<label for="film-7">
+						<input type="checkbox" name="film" id="film-7" ng-model="film08" ng-true-value="'J\'aime le PopCorn devant n\'importe quel film !'"> J'aime le PopCorn devant n'importe quel film !
+					</label>
+				</div>
+			</div>
+		</div>
+		<!-- Button (Double) -->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="continuer"></label>
+			<div class="col-md-4">
+				<a class="btn btn-warning" ng-click="precedent()">
+					<< Précédent</a>
+						<button id="continuer" ng-click="page()" name="continuer" class="btn btn-success">Continuer >> </button>
+			</div>
+		</div>
+	</form>
+</div>
+
+<div ng-show="op1 == 11" class="block">
+	<form class="form-horizontal">
+
+		<!-- Form Name -->
+		<legend>Vos centres d'interêts</legend>
+
+		<!-- Multiple Checkboxes -->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="travail">Qu'aimez-vous faire après une dure journée de travail ?</label>
+			<div class="col-md-4">
+				<div class="checkbox">
+					<label for="travail-0">
+						<input type="checkbox" name="travail" id="travail-0" ng-model="travail01" ng-true-value="'Aller boire un verre entre amis'" ng-false-value="''"> Aller boire un verre entre amis
+					</label>
+				</div>
+				<div class="checkbox">
+					<label for="travail-1">
+						<input type="checkbox" name="travail" id="travail-1" ng-model="travail02" ng-true-value="'Aller me défouler en faisant du sport'" ng-false-value="''"> Aller me défouler en faisant du sport
+					</label>
+				</div>
+				<div class="checkbox">
+					<label for="travail-2">
+						<input type="checkbox" name="travail" id="travail-2" ng-model="travail03" ng-true-value="'Faire une bonne sieste'" ng-false-value="''"> Faire une bonne sieste
+					</label>
+				</div>
+				<div class="checkbox">
+					<label for="travail-3">
+						<input type="checkbox" name="travail" id="travail-3" ng-model="travail04" ng-true-value="Rien de mieux qu\'un bon cinéma" ng-false-value="''"> Rien de mieux qu'un bon cinéma
+					</label>
+				</div>
+				<div class="checkbox">
+					<label for="travail-4">
+						<input type="checkbox" name="travail" id="travail-4" ng-model="travail05" ng-true-value="'Faire un after-work pour me détendre'" ng-false-value="''"> Faire un after-work pour me détendre
+					</label>
+				</div>
+				<div class="checkbox">
+					<label for="travail-5">
+						<input type="checkbox" name="travail" id="travail-5" ng-model="travail06" ng-true-value="'Du JavaScript toujours du JavaScript !'" ng-false-value="''"> Du JavaScript toujours du JavaScript !
+					</label>
+				</div>
+			</div>
+		</div>
+		<!-- Button (Double) -->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="continuer"></label>
+			<div class="col-md-4">
+				<a class="btn btn-warning" ng-click="precedent()">
+					<< Précédent</a>
+						<button id="continuer" ng-click="page()" name="continuer" class="btn btn-success">Continuer >></button>
+			</div>
+		</div>
+	</form>
+</div>
+
+<div ng-show="op1 == 12" class="block">
+	<form class="form-horizontal">
+
+		<!-- Form Name -->
+		<legend>Vos centres d'interêts</legend>
+
+		<!-- Multiple Checkboxes -->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="passeTemps">Et sinon, avez-vous des passe-temps favoris ?</label>
+			<div class="col-md-4">
+				<div class="checkbox">
+					<label for="passeTemps-0">
+						<input type="checkbox" name="passeTemps" id="passeTemps-0" ng-model="passeTemps01" ng-true-value="'Lire un bon bouquin'" ng-false-value="''"> Lire un bon bouquin
+					</label>
+				</div>
+				<div class="checkbox">
+					<label for="passeTemps-1">
+						<input type="checkbox" name="passeTemps" id="passeTemps-1" ng-model="passeTemps02" ng-true-value="'Ecouter la musique à fond'" ng-false-value="''"> Ecouter la musique à fond
+					</label>
+				</div>
+				<div class="checkbox">
+					<label for="passeTemps-2">
+						<input type="checkbox" name="passeTemps" id="passeTemps-2" ng-model="passeTemps03" ng-true-value="'Me balader et prendre des photos'" ng-false-value="''"> Me balader et prendre des photos
+					</label>
+				</div>
+				<div class="checkbox">
+					<label for="passeTemps-3">
+						<input type="checkbox" name="passeTemps" id="passeTemps-3" ng-model="passeTemps04" ng-true-value="'Faire la fête'" ng-false-value="''"> Faire la fête
+					</label>
+				</div>
+				<div class="checkbox">
+					<label for="passeTemps-4">
+						<input type="checkbox" name="passeTemps" id="passeTemps-4" ng-model="passeTemps05" ng-true-value="'J\'en ai pleins à faire découvrir !'" -false-value="''"> J'en ai pleins à faire découvrir !
+					</label>
+				</div>
+			</div>
+		</div>
+		<!-- Button (Double) -->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="continuer"></label>
+			<div class="col-md-4">
+				<a class="btn btn-warning" ng-click="precedent()">
+					<< Précédent</a>
+						<button id="continuer" ng-click="page()" name="continuer" class="btn btn-success">Continuer >></button>
+			</div>
+		</div>
+	</form>
+</div>
+
+<div ng-show="op1 == 13" class="block">
+
+	<form class="form-horizontal">
+		<!-- Form Name -->
+		<legend>Montrez votre meilleur profil ...</legend>
+		<!-- File Button -->
+
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="continuer"></label>
+			<div class="col-md-4">
+				<div flow-init="{target: '/upload', singleFile: true}" flow-file-added="!!{png:1,gif:1,jpg:1,jpeg:1}[$file.getExtension()]" flow-name="uploader.flow" flow-files-added="processFiles($files)">
+					<div ng-repeat="image in uploader.flow.files track by $index">
+						<center>
+							<span class="text"></span><img ng-show="out" class="preview" flow-img="image" />
+							<br>
+							<span class="text"></span> <img class="preview" ng-src="{{imageStrings[$index]}}" />
+							<p>
+								<span class="btn glyphicon glyphicon-trash" ng-show="$flow.files.length" ng-click="image.cancel()"></span>
+							</p>
+						</center>
+					</div>
+					<center>
+						<button flow-btn flow-attrs="{accept:'image/*'}" type="file" ng-click="photoUser=2" class="btn btn-success">Télécharger une image</button>
+					</center>
+				</div>
+
+				<center>
+					<div class="boutonfin">
+						<a class="btn btn-warning" ng-click="precedent()">
+							<< Précédent</a>
+
+								<a href="#/redirection_recherche" ng-click="add()" name="continuer" class="btn btn-success">Terminer !</a>
+					</div>
+				</center>
+			</div>
+		</div>
+	</form>
+</div>
